@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="action_transport_products" model="ir.actions.act_window">
+        <field name="name">Transport services</field>
+        <field name="res_model">cpq.transport.product</field>
+        <field name="view_mode">kanban,list,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first transport service
+            </p>
+            <p>
+                A transport service is linked to an Odoo product. Add it to any
+                quotation and configure the origin/destination addresses to
+                compute the price automatically from the road distance.
+            </p>
+        </field>
+    </record>
+
+    <record id="action_cpq_transport_config" model="ir.actions.act_window">
+        <field name="name">Transport configurations</field>
+        <field name="res_model">cpq.transport.config</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref="view_cpq_transport_config_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No transport configuration yet
+            </p>
+            <p>
+                Configurations are created automatically when a user configures
+                the transport on a quotation line.
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_transport_root"
+              name="Transport (CPQ)"
+              sequence="55"
+              web_icon="cpq_transport,static/description/icon.png"/>
+
+    <menuitem id="menu_transport_products"
+              name="Transport services"
+              parent="menu_transport_root"
+              action="action_transport_products"
+              sequence="10"/>
+
+    <menuitem id="menu_transport_configurations"
+              name="Configurations"
+              parent="menu_transport_root"
+              action="action_cpq_transport_config"
+              sequence="20"/>
+
+</odoo>

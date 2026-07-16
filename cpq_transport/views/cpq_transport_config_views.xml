@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_cpq_transport_config_form" model="ir.ui.view">
+        <field name="name">cpq.transport.config.form</field>
+        <field name="model">cpq.transport.config</field>
+        <field name="arch" type="xml">
+            <form string="Transport configuration">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="sale_line_id" readonly="1"/>
+                            <field name="origin_address"/>
+                            <field name="destination_address"/>
+                            <field name="trip_type"/>
+                        </group>
+                        <group>
+                            <field name="price_per_km"/>
+                            <field name="currency_id" invisible="1"/>
+                            <field name="distance_km"/>
+                            <field name="computed_price"/>
+                            <field name="last_computed_at"/>
+                            <field name="is_stale"/>
+                        </group>
+                    </group>
+                    <field name="summary" readonly="1"/>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_cpq_transport_config_list" model="ir.ui.view">
+        <field name="name">cpq.transport.config.list</field>
+        <field name="model">cpq.transport.config</field>
+        <field name="arch" type="xml">
+            <list string="Transport configurations">
+                <field name="sale_line_id"/>
+                <field name="origin_address"/>
+                <field name="destination_address"/>
+                <field name="trip_type"/>
+                <field name="distance_km"/>
+                <field name="price_per_km"/>
+                <field name="computed_price"/>
+                <field name="currency_id" column_invisible="1"/>
+                <field name="last_computed_at"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_cpq_transport_config_search" model="ir.ui.view">
+        <field name="name">cpq.transport.config.search</field>
+        <field name="model">cpq.transport.config</field>
+        <field name="arch" type="xml">
+            <search string="Transport configurations">
+                <field name="origin_address"/>
+                <field name="destination_address"/>
+                <field name="sale_line_id"/>
+                <filter string="Round-trip" name="round_trip" domain="[('trip_type', '=', 'round_trip')]"/>
+                <filter string="One-way" name="one_way" domain="[('trip_type', '=', 'one_way')]"/>
+                <filter string="Trip type" name="group_trip_type" context="{'group_by': 'trip_type'}"/>
+            </search>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form_transport" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.transport</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="sale.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//block[@id='pricing_setting_container']" position="after">
+                <block title="Transport (CPQ)" id="cpq_transport_settings_block">
+                    <setting id="cpq_transport_settings_setting"
+                             string="Distance-based transport quoting"
+                             help="Google Cloud API key used for Routes API (distance) and Places API (autocomplete).">
+                        <div class="content-group">
+                            <div class="row mt16">
+                                <label for="transport_gmaps_api_key" class="col-lg-3 o_light_label"/>
+                                <field name="transport_gmaps_api_key" password="True"/>
+                            </div>
+                        </div>
+                    </setting>
+                </block>
+            </xpath>
+        </field>
+    </record>
+</odoo>

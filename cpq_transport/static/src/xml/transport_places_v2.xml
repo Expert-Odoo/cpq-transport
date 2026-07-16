@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+
+    <t t-name="cpq_transport.TransportPlacesAutocompleteV2">
+        <AutoComplete
+            value="props.record.data[props.name] || ''"
+            sources="sources"
+            placeholder="props.placeholder"
+            searchOnInputClick="false"
+            inputDebounceDelay="300"
+            input="input"
+        />
+    </t>
+
+</templates>
