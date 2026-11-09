@@ -133,6 +133,24 @@ class CpqTransportWizard(models.TransientModel):
             "context": {"dialog_size": "medium"},
         }
 
+    def _prepare_config_vals(self):
+        """Values written to cpq.transport.config on validation.
+
+        Extracted as a hook so add-ons can inject extra fields (vehicle,
+        weight, volume...) without overriding the whole method.
+        """
+        self.ensure_one()
+        return {
+            "sale_line_id": self.sale_line_id.id,
+            "origin_address": self.origin_address,
+            "destination_address": self.destination_address,
+            "trip_type": self.trip_type,
+            "price_per_km": self.price_per_km,
+            "one_way_km": self.one_way_km,
+            "last_signature": self.last_signature,
+            "last_computed_at": self.last_computed_at,
+        }
+
     def action_validate(self):
         self.ensure_one()
         if self.state != "computed":
@@ -142,16 +160,7 @@ class CpqTransportWizard(models.TransientModel):
 
         line = self.sale_line_id
         cfg = line.transport_config_id
-        vals = {
-            "sale_line_id": line.id,
-            "origin_address": self.origin_address,
-            "destination_address": self.destination_address,
-            "trip_type": self.trip_type,
-            "price_per_km": self.price_per_km,
-            "one_way_km": self.one_way_km,
-            "last_signature": self.last_signature,
-            "last_computed_at": self.last_computed_at,
-        }
+        vals = self._prepare_config_vals()
         if cfg:
             cfg.write(vals)
         else:
