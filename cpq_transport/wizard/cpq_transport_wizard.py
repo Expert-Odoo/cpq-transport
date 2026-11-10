@@ -104,7 +104,7 @@ class CpqTransportWizard(models.TransientModel):
         if not self.origin_address or not self.destination_address:
             raise UserError(_("Please fill in both origin and destination addresses."))
         ICP = self.env["ir.config_parameter"].sudo()
-        api_key = ICP.get_param("cpq_transport.gmaps_api_key")
+        api_key = ICP.get_str("cpq_transport.gmaps_api_key")
         if not api_key:
             raise UserError(_(
                 "Google Routes API key is missing. Set it in "

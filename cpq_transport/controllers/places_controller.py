@@ -25,7 +25,7 @@ class CpqTransportPlacesController(http.Controller):
         if not query or len(query.strip()) < 3:
             return {"suggestions": [], "status": "OK"}
 
-        api_key = request.env["ir.config_parameter"].sudo().get_param(
+        api_key = request.env["ir.config_parameter"].sudo().get_str(
             "cpq_transport.gmaps_api_key"
         )
         lang = (language or request.env.user.lang or "fr").split("_")[0]

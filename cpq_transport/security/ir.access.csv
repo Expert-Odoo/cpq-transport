@@ -1,0 +1,5 @@
+id,name,model_id,group_id/id,operation,domain
+access_cpq_transport_product_user,cpq.transport.product user,cpq.transport.product,base.group_user,crud,
+access_cpq_transport_config_user,cpq.transport.config user,cpq.transport.config,base.group_user,crud,
+access_cpq_transport_wizard_user,cpq.transport.wizard user,cpq.transport.wizard,base.group_user,crud,
+access_cpq_transport_line_selector_user,cpq.transport.line.selector user,cpq.transport.line.selector,base.group_user,crud,

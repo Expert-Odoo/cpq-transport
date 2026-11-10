@@ -115,7 +115,7 @@ class TestCpqTransport(TransactionCase):
 
     def test_08_zero_results_raises_usererror(self):
         _, line = self._make_order()
-        self.env["ir.config_parameter"].sudo().set_param(
+        self.env["ir.config_parameter"].sudo().set_str(
             "cpq_transport.gmaps_api_key", "FAKE"
         )
         wiz = self.env["cpq.transport.wizard"].create({
@@ -132,7 +132,7 @@ class TestCpqTransport(TransactionCase):
 
     def test_09_missing_api_key_raises_usererror(self):
         _, line = self._make_order()
-        self.env["ir.config_parameter"].sudo().set_param(
+        self.env["ir.config_parameter"].sudo().set_str(
             "cpq_transport.gmaps_api_key", ""
         )
         wiz = self.env["cpq.transport.wizard"].create({

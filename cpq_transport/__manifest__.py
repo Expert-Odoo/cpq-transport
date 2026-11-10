@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     "name": "Google Maps Delivery Pricing — Distance Quote & Address Autocomplete",
-    "version": "19.0.1.0.4",
+    "version": "20.0.1.0.0",
     "summary": "Add delivery, shipping or transport products to quotations. Google Maps address autocomplete and automatic road-distance pricing per kilometer.",
     "description": """
 Google Maps Delivery Pricing for Odoo Sales
@@ -39,7 +39,7 @@ Features
     "license": "LGPL-3",
     "depends": ["sale_management", "product"],
     "data": [
-        "security/ir.model.access.csv",
+        "security/ir.access.csv",
         "views/cpq_transport_product_views.xml",
         "views/cpq_transport_config_views.xml",
         "views/menu.xml",
