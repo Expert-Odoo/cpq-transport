@@ -69,13 +69,13 @@
         <field name="name">cpq.transport.product.list</field>
         <field name="model">cpq.transport.product</field>
         <field name="arch" type="xml">
-            <list string="Transport services">
+            <tree string="Transport services">
                 <field name="name"/>
                 <field name="product_tmpl_id"/>
                 <field name="default_price_per_km"/>
                 <field name="currency_id" column_invisible="1"/>
                 <field name="origin_default"/>
-            </list>
+            </tree>
         </field>
     </record>
 
@@ -90,8 +90,8 @@
                 <field name="currency_id"/>
                 <field name="origin_default"/>
                 <templates>
-                    <t t-name="card">
-                        <div class="oe_kanban_details p-2">
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click oe_kanban_details p-2">
                             <div class="o_kanban_record_title">
                                 <strong><field name="name"/></strong>
                             </div>

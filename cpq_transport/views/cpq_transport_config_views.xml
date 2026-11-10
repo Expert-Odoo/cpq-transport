@@ -32,7 +32,7 @@
         <field name="name">cpq.transport.config.list</field>
         <field name="model">cpq.transport.config</field>
         <field name="arch" type="xml">
-            <list string="Transport configurations">
+            <tree string="Transport configurations">
                 <field name="sale_line_id"/>
                 <field name="origin_address"/>
                 <field name="destination_address"/>
@@ -42,7 +42,7 @@
                 <field name="computed_price"/>
                 <field name="currency_id" column_invisible="1"/>
                 <field name="last_computed_at"/>
-            </list>
+            </tree>
         </field>
     </record>
 

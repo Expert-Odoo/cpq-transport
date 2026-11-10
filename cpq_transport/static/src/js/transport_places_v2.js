@@ -5,7 +5,6 @@ import { CharField, charField } from "@web/views/fields/char/char_field";
 import { AutoComplete } from "@web/core/autocomplete/autocomplete";
 import { useChildRef, useService } from "@web/core/utils/hooks";
 import { useInputField } from "@web/views/fields/input_field_hook";
-import { rpc } from "@web/core/network/rpc";
 
 export class TransportPlacesAutocompleteV2 extends CharField {
     static template = "cpq_transport.TransportPlacesAutocompleteV2";
@@ -15,6 +14,7 @@ export class TransportPlacesAutocompleteV2 extends CharField {
         super.setup();
         this.input = useChildRef();
         this.orm = useService("orm");
+        this.rpc = useService("rpc");
         useInputField({
             ref: this.input,
             getValue: () => this.props.record.data[this.props.name] || "",
@@ -25,12 +25,12 @@ export class TransportPlacesAutocompleteV2 extends CharField {
                 options: async (request) => {
                     if (!request || request.length < 3) return [];
                     try {
-                        const result = await rpc("/cpq_transport/autocomplete", {
+                        const result = await this.rpc("/cpq_transport/autocomplete", {
                             query: request,
                         });
                         return (result.suggestions || []).map((s) => ({
                             label: s.text,
-                            onSelect: () => this.selectSuggestion(s),
+                            data: s,
                         }));
                     } catch (err) {
                         return [];
@@ -43,6 +43,10 @@ export class TransportPlacesAutocompleteV2 extends CharField {
 
     get sources() {
         return this._sources;
+    }
+
+    onSelectSuggestion(option) {
+        this.selectSuggestion(option.data);
     }
 
     async selectSuggestion(suggestion) {

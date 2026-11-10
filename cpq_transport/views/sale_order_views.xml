@@ -15,7 +15,7 @@
                     <field name="transport_line_count" widget="statinfo" string="Transport"/>
                 </button>
             </xpath>
-            <xpath expr="//field[@name='order_line']/list/field[@name='price_unit']" position="before">
+            <xpath expr="//field[@name='order_line']/tree/field[@name='price_unit']" position="before">
                 <field name="is_transport" column_invisible="1"/>
                 <field name="transport_config_id" column_invisible="1"/>
                 <field name="transport_summary" column_invisible="1"/>
