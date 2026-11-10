@@ -34,10 +34,13 @@ class CpqTransportProduct(models.Model):
         readonly=True,
     )
 
-    _product_tmpl_uniq = models.Constraint(
-        "UNIQUE(product_tmpl_id)",
-        "A product template can only be linked to one Transport service.",
-    )
+    _sql_constraints = [
+        (
+            "product_tmpl_uniq",
+            "UNIQUE(product_tmpl_id)",
+            "A product template can only be linked to one Transport service.",
+        ),
+    ]
 
     @api.model_create_multi
     def create(self, vals_list):

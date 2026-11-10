@@ -30,7 +30,7 @@ export class TransportPlacesAutocompleteV2 extends CharField {
                         });
                         return (result.suggestions || []).map((s) => ({
                             label: s.text,
-                            onSelect: () => this.selectSuggestion(s),
+                            data: s,
                         }));
                     } catch (err) {
                         return [];
@@ -43,6 +43,10 @@ export class TransportPlacesAutocompleteV2 extends CharField {
 
     get sources() {
         return this._sources;
+    }
+
+    onSelectSuggestion(option) {
+        this.selectSuggestion(option.data);
     }
 
     async selectSuggestion(suggestion) {

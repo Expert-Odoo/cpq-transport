@@ -6,9 +6,8 @@
             value="props.record.data[props.name] || ''"
             sources="sources"
             placeholder="props.placeholder"
-            searchOnInputClick="false"
-            inputDebounceDelay="300"
             input="input"
+            onSelect="(option) => this.onSelectSuggestion(option)"
         />
     </t>
 
