@@ -43,7 +43,7 @@
                             <div class="alert alert-warning" role="alert" style="font-size:13px;">
                                 <strong>Available on the Odoo App Store:</strong>
                                 <ul class="mt-2 mb-0">
-                                    <li><strong>Advanced Rates</strong> (cpq_transport_pro) —
+                                    <li><strong>Advanced Rates</strong> (cpq_transport_rates) -
                                         price by real road distance combined with vehicle type,
                                         distance tiers, and weight or volume. Adds a pickup fee
                                         and a minimum charge per trip.</li>
@@ -51,7 +51,7 @@
                             </div>
                             <div class="alert alert-info mt-2" role="alert" style="font-size:13px;">
                                 See <a href="https://expodo.fr" target="_blank">expodo.fr</a>
-                                and search <strong>cpq_transport_pro</strong> on the Odoo App Store.
+                                and search <strong>cpq_transport_rates</strong> on the Odoo App Store.
                             </div>
                         </page>
 
